@@ -1,11 +1,94 @@
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
+.like-icon {
+  background-color: transparent;
+  border: 2px solid transparent;
+  transition: border 0.3s ease;
+}
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
+.card__icon-button:focus {
+  outline: none;
+}
 
-*/
+.card__icon-button:focus-visible .like-icon {
+  border: 2px solid var(--color-accent, #000);
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+.contour {
+  fill: var(--color-accent);
+  transition: fill 0.1s linear;
+}
+
+.main-body {
+  transition: fill 0.3s linear;
+  fill: transparent;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.card__icon-button:hover .core {
+  fill: var(--color-accent);
+  transition: fill 0.3s linear;
+}
+
+.card__icon-button:hover .main-body {
+  fill: var(--color-accent);
+  transition: fill 0.3s linear 0.05s;;
+}
+
+.card__icon-button:active .core {
+  fill: var(--color-animation-fill, #f00);
+  transition: fill 0.3s linear;
+}
+
+.card__icon-button:active .main-body {
+  fill: var(--color-animation-fill, #f00);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--color-animation-fill);
+  transition: fill 0.3s linear 0s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--color-animation-fill);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--color-animation-fill);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.card__icon-button .is-liked {
+  animation: button-liked 0.3s ease-in 0.1s 1;
+  transform-origin: center;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks-liked 0.3s ease-in 0.3s 1;
+}
+
+@keyframes button-liked {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.25);
+  }
+}
+
+@keyframes sparks-liked {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+}

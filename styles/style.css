@@ -1,16 +1,287 @@
-/* Здесь вы напишете основную часть стилей страницы.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-family: var(--font);
+  font-variation-settings: 'wght' var(--font-weight-text);
+  font-size: var(--font-size);
+  background-image: var(--background-image);
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.header {
+  display: flex;
+  justify-content: center;
+}
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: var(--width-container);
+  height: var(--height-header);
+  margin: 100px 0;
+  gap: 20px;
+  border: 2px solid var(--color-accent);
+  font-family: var(--font-accent);
+  background-color: var(--color-background);
+}
+
+.header__title {
+  font-size: var(--font-size-header-title);
+  line-height: 100%;
+}
+
+.header__subtitle {
+  font-size: var(--font-size-header-subtitle);
+  line-height: 100%;
+  text-transform: uppercase;
+}
+
+.content-cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.card {
+  display: grid;
+  width: var(--width-container);
+  background-color: var(--color-background);
+  border: 2px solid var(--color-accent);
+  margin-bottom: 50px;
+}
+
+.card-title {
+  font-family: var(--font, sans-serif);
+  font-variation-settings: 'wght' var(--font-weight-title);
+  font-size: var(--font-size-p, 18px);
+  padding: 6px 10px;
+  line-height: 100%;
+}
+
+.card-image-wrapper {
+  position: relative;
+  margin-bottom: 25px;
+  overflow: hidden;
+  border-top: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+}
+
+.card-label {
+  position: absolute;
+  top: 27px;
+  right: var(--right-label);
+  font-family: var(--font-accent);
+  font-size: var(--font-size-accent);
+  mix-blend-mode: hard-light;
+}
+
+@supports (text-stroke: var(--text-stroke)) {
+  .card-label {
+    -webkit-text-stroke: var(--text-stroke);
+  }
+}
+
+@supports (-webkit-text-stroke: var(--text-stroke)) {
+  .card-label {
+    -webkit-text-stroke: var(--text-stroke);
+  }
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+}
+
+.card:nth-child(2) .card-image {
+  filter: contrast(0.5) brightness(90%);
+}
+
+.card:nth-child(3) .card-image {
+  filter: brightness(20%);
+}
+
+.card:nth-child(4) .card-image {
+  filter: saturate(3);
+}
+
+.card:nth-child(5) .card-image {
+  filter: hue-rotate(37deg);
+}
+
+.card:nth-child(6) .card-image {
+  filter: sepia(0.5) blur(0.1em);
+}
+
+.card:nth-child(7) .card-image {
+  filter: brightness(0.8) blur(0.35rem) saturate(0.4) contrast(5);
+}
+
+.card:nth-child(8) .card-image {
+  filter: brightness(120%);
+}
+
+
+.card-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+}
+
+.card-text {
+  font-family: var(--font);
+  line-height: 21px;
+  padding: 0px 25px;
+}
+
+.button-wrapper {
+  padding: 25px;
+  display: flex;
+  justify-content: end;
+}
+
+.button {
+  background-color: var(--color-background);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  border: 2px solid var(--color-accent);
+  font-family: var(--font-accent);
+  font-size: var(--font-size-accent);
+  transition: var(--transition-gradient);
+}
+
+.button__text {
+  position: relative;
+  z-index: 1;
+  color: var(--color-background);
+  mix-blend-mode: difference;
+  width: 120px;
+
+  line-height: 90%;
+}
+
+.card__icon-button {
+  border: transparent;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button-save {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-block-size: 55px;
+  border: 2px solid var(--color-accent);
+  background-color: var(--color-background);
+  transition: var(--transition-gradient);
+
+  margin-top: 2px;
+  padding: 15px 19px;
+}
+
+.button-save svg {
+  position: relative;
+  z-index: 1;
+  width: 21px;
+  height: 21px;
+  fill: var(--color-background);
+  mix-blend-mode: difference;
+}
+
+.button__text-save {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-accent);
+  font-size: var(--font-size-accent);
+  color: var(--color-background);
+  mix-blend-mode: difference;
+}
+
+.button__effect {
+  position: relative;
+}
+
+.button__effect:focus {
+  outline: none;
+  box-shadow: 2px 2px 0px 0px var(--color-accent);
+}
+
+.button__effect::before {
+  position: absolute;
+  inset: 0;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out;
+  content: "";
+  background-color: var(--color-accent);
+}
+
+.button__effect:hover::before {
+  transform: scaleX(1);
+} 
+
+.dialog {
+  font-family: var(--font-accent);
+  font-size: var(--font-size-accent);
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.dialog[open] {
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  padding: 30px;
+  gap: 30px;
+
+}
+
+.dialog[open]::backdrop {
+  opacity: 0.75;
+  background: var(--color-accent, #000);
+}
+
+.dialog-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.dialog-wrapper svg {
+  width: 40px;
+}
+
+.dialog-close {
+  display: flex;
+  align-items: center;
+  height: 38px;
+  padding: 12.5px 132.5px;
+  inline-size: var(--dialog-width, 293px);
+  background-color: var(--color-background, #fff);
+  transition: var(--transition-gradient);
+}
+
+.dialog-close-text {
+  mix-blend-mode: difference;
+  color: var(--color-background, #fff);
+}
+
+@media (width <= 375px) {
+  .dialog-close {
+    padding: 12.5px 114.5px;
+  }
+  .button-save {
+    flex-direction: column;
+  }
+  .button-save svg {
+    width: 28px;
+    margin-top: 2px;
+  }
 }
